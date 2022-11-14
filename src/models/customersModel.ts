@@ -1,15 +1,12 @@
 import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
-export class Suppliers {
+export class Customers {
   @PrimaryColumn()
-  supplierId!: string;;
+  customersId!: string;
 
   @Column()
   companyName!: string;
-
-  @Column()
-  contactName!: string;
 
   @Column()
   contactTitle!: string;
@@ -21,14 +18,17 @@ export class Suppliers {
   city!: string;
 
   @Column()
-  region!: string;
+  postalCode!: number;
 
   @Column()
-  postalCoe!: string;
+  region!: string;
 
   @Column()
   country!: string;
 
   @Column()
   phone!: string;
+
+  @Column()
+  fax!: string;
 }
