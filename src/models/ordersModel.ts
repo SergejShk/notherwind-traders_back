@@ -1,7 +1,16 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Products, Customers } from "models";
+import {
+  Entity,
+  BaseEntity,
+  Column,
+  PrimaryColumn,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from "typeorm";
 
 @Entity()
-export class Orders {
+export class Orders extends BaseEntity {
   @PrimaryColumn()
   OrderID!: string;
 
@@ -43,4 +52,11 @@ export class Orders {
 
   @Column()
   ShipCountry!: string;
+
+  @OneToMany(() => Products, (products) => products.orders)
+  products: Products[] | undefined;
+
+  @OneToOne(() => Customers)
+  @JoinColumn()
+  orders!: Customers;
 }

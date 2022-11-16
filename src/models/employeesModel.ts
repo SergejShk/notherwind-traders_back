@@ -1,7 +1,14 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import {
+  Entity,
+  BaseEntity,
+  Column,
+  PrimaryColumn,
+  OneToOne,
+  JoinColumn,
+} from "typeorm";
 
 @Entity()
-export class Employees {
+export class Employees extends BaseEntity {
   @PrimaryColumn()
   EmployeeId!: string;
 
@@ -43,4 +50,8 @@ export class Employees {
 
   @Column()
   ReportTo!: string;
+
+  @OneToOne(() => Employees, (reportsTo) => reportsTo.EmployeeId)
+  @JoinColumn({ name: "EmployeeID" })
+  ReportsTo: Employees | undefined;
 }

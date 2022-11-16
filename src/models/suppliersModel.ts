@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Products } from "models";
+import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany } from "typeorm";
 
 @Entity()
-export class Suppliers {
+export class Suppliers extends BaseEntity {
   @PrimaryColumn()
   SupplierID!: string;
 
@@ -9,32 +10,35 @@ export class Suppliers {
   CompanyName!: string;
 
   @Column()
-  ContactName!: string;
+  ContactName: string | undefined;
 
   @Column()
-  ContactTitle!: string;
+  ContactTitle: string | undefined;
 
   @Column()
-  Address!: string;
+  Address: string | undefined;
 
   @Column()
-  City!: string;
+  City: string | undefined;
 
   @Column()
-  Region!: string;
+  Region: string | undefined;
 
   @Column()
-  PostalCode!: string;
+  PostalCode: string | undefined;
 
   @Column()
-  Country!: string;
+  Country: string | undefined;
 
   @Column()
-  Phone!: string;
+  Phone: string | undefined;
 
   @Column()
-  Fax!: string;
+  Fax: string | undefined;
 
   @Column()
-  HomePage!: string;
+  HomePage: string | undefined;
+
+  @OneToMany(() => Products, (products) => products.suppliers)
+  products: Products[] | undefined;
 }
