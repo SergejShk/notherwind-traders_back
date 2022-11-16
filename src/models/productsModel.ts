@@ -3,29 +3,32 @@ import { Entity, Column, PrimaryColumn } from "typeorm";
 @Entity()
 export class Products {
   @PrimaryColumn()
-  productId!: string;
+  ProductID!: string;
 
   @Column()
-  productName!: string;
+  ProductName!: string;
 
   @Column()
-  supplier!: string;
+  SupplierID!: string;
 
   @Column()
-  quantityPerUnit!: string;
+  CategoryID!: string;
 
   @Column()
-  unitPrice!: string;
+  QuantityPerUnit!: string;
 
   @Column()
-  unitInStock!: string;
+  UnitPrice!: string;
 
   @Column()
-  unitInOrder!: string;
+  UnitsInStock!: string;
 
   @Column()
-  reorderLevel!: string;
+  UnitsOnOrder!: string;
 
   @Column()
-  discontinued!: string;
+  ReorderLevel!: string;
+
+  @Column()
+  Discontinued!: string;
 }

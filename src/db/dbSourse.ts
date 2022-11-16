@@ -1,10 +1,6 @@
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
-import { Suppliers } from "../models/suppliersModel";
-import { Products } from "../models/productsModel";
-import { Orders } from "../models/ordersModel";
-import { Employees } from "../models/employeesModel";
-import { Customers } from "../models/customersModel";
+import { Customers, Employees, Orders, Products, Suppliers } from "models";
 
 dotenv.config();
 

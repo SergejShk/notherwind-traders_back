@@ -3,32 +3,35 @@ import { Entity, Column, PrimaryColumn } from "typeorm";
 @Entity()
 export class Customers {
   @PrimaryColumn()
-  customersId!: string;
+  CustomerID!: string;
 
   @Column()
-  companyName!: string;
+  CompanyName!: string;
 
   @Column()
-  contactTitle!: string;
+  ContactName!: string;
 
   @Column()
-  address!: string;
+  ContactTitle!: string;
 
   @Column()
-  city!: string;
+  Address!: string;
 
   @Column()
-  postalCode!: number;
+  City!: string;
 
   @Column()
-  region!: string;
+  Region!: string;
 
   @Column()
-  country!: string;
+  PostalCode!: string;
 
   @Column()
-  phone!: string;
+  Country!: string;
 
   @Column()
-  fax!: string;
+  Phone!: string;
+
+  @Column()
+  Fax!: string;
 }

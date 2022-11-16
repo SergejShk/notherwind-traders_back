@@ -3,50 +3,44 @@ import { Entity, Column, PrimaryColumn } from "typeorm";
 @Entity()
 export class Orders {
   @PrimaryColumn()
-  orderId!: string;
+  OrderID!: string;
 
   @Column()
-  customerId!: string;
+  CustomerID!: string;
 
   @Column()
-  shipName!: string;
+  EmployeeID!: string;
 
   @Column()
-  totalProducts!: number;
+  OrderDate!: string;
 
   @Column()
-  totalQuantity!: number;
+  RequiredDate!: string;
 
   @Column()
-  totalPrice!: number;
+  ShippedDate!: string;
 
   @Column()
-  totalDiscount!: number;
+  ShipVia!: number;
 
   @Column()
-  shipVia!: string;
+  Freight!: number;
 
   @Column()
-  freight!: number;
+  ShipName!: string;
 
   @Column()
-  orderDate!: string;
+  ShipAddress!: string;
 
   @Column()
-  requiredDate!: string;
+  ShipCity!: string;
 
   @Column()
-  shippedDate!: string;
+  ShipRegion!: string;
 
   @Column()
-  shipCity!: string;
+  ShipPostalCode!: string;
 
   @Column()
-  shipRegion!: string;
-
-  @Column()
-  shipPostalCode!: number;
-
-  @Column()
-  shipCountry!: string;
+  ShipCountry!: string;
 }

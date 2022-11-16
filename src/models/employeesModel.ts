@@ -3,44 +3,44 @@ import { Entity, Column, PrimaryColumn } from "typeorm";
 @Entity()
 export class Employees {
   @PrimaryColumn()
-  employeeId!: string;
+  EmployeeId!: string;
 
   @Column()
-  name!: string;
+  Name!: string;
 
   @Column()
-  title!: string;
+  Title!: string;
 
   @Column()
-  titleOfCourtesy!: string;
+  TitleOfCourtesy!: string;
 
   @Column()
-  birthDate!: string;
+  BirthDate!: string;
 
   @Column()
-  hireDate!: string;
+  HireDate!: string;
 
   @Column()
-  address!: string;
+  Address!: string;
 
   @Column()
-  city!: string;
+  City!: string;
 
   @Column()
-  postalCode!: number;
+  PostalCode!: number;
 
   @Column()
-  country!: string;
+  Country!: string;
 
   @Column()
-  homePhone!: string;
+  HomePhone!: string;
 
   @Column()
-  extension!: number;
+  Extension!: number;
 
   @Column()
-  notes!: string;
+  Notes!: string;
 
   @Column()
-  reportTo!: string;
+  ReportTo!: string;
 }
