@@ -1,4 +1,4 @@
-import { Products } from "models";
+import { Products } from "./productsModel";
 import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany } from "typeorm";
 
 @Entity()
@@ -10,35 +10,36 @@ export class Suppliers extends BaseEntity {
   CompanyName!: string;
 
   @Column()
-  ContactName: string | undefined;
+  ContactName!: string;
 
   @Column()
-  ContactTitle: string | undefined;
+  ContactTitle!: string;
 
   @Column()
-  Address: string | undefined;
+  Address!: string;
 
   @Column()
-  City: string | undefined;
+  City!: string;
 
   @Column()
-  Region: string | undefined;
+  Region!: string;
 
   @Column()
-  PostalCode: string | undefined;
+  PostalCode!: string;
 
   @Column()
-  Country: string | undefined;
+  Country!: string;
 
   @Column()
-  Phone: string | undefined;
+  Phone!: string;
 
   @Column()
-  Fax: string | undefined;
+  Fax!: string;
 
   @Column()
-  HomePage: string | undefined;
+  HomePage!: string;
+  products: any;
 
-  @OneToMany(() => Products, (products) => products.suppliers)
-  products: Products[] | undefined;
+  @OneToMany(() => Products, (product) => product.suppliers)
+  product!: Products[];
 }

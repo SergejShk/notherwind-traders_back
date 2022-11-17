@@ -1,4 +1,6 @@
-import { Suppliers, Orders } from "models";
+import { OrderDetails } from "./orderDetailsModel";
+import { Orders } from "./ordersModel";
+import { Suppliers } from "./suppliersModel";
 import {
   Entity,
   BaseEntity,
@@ -6,6 +8,7 @@ import {
   PrimaryColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from "typeorm";
 
 @Entity()
@@ -17,28 +20,28 @@ export class Products extends BaseEntity {
   ProductName!: string;
 
   @Column()
-  SupplierID: string | undefined;
+  SupplierID!: string;
 
   @Column()
-  CategoryID: string | undefined;
+  CategoryID!: string;
 
   @Column()
-  QuantityPerUnit: string | undefined;
+  QuantityPerUnit!: string;
 
   @Column()
-  UnitPrice: string | undefined;
+  UnitPrice!: string;
 
   @Column()
-  UnitsInStock: string | undefined;
+  UnitsInStock!: string;
 
   @Column()
-  UnitsOnOrder: string | undefined;
+  UnitsOnOrder!: string;
 
   @Column()
-  ReorderLevel: string | undefined;
+  ReorderLevel!: string;
 
   @Column()
-  Discontinued: string | undefined;
+  Discontinued!: string;
 
   @ManyToOne(() => Suppliers, (suppliers) => suppliers.products)
   @JoinColumn({ name: "SupplierID" })
@@ -46,5 +49,8 @@ export class Products extends BaseEntity {
 
   @ManyToOne(() => Orders, (orders) => orders.products)
   @JoinColumn({ name: "OrderID" })
-  orders: Orders[] | undefined;
+  orders: Orders | undefined;
+
+  @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.Product)
+  orderDetails!: OrderDetails[];
 }

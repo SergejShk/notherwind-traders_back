@@ -1,11 +1,13 @@
-import { Products, Customers } from "models";
+import { OrderDetails } from "./orderDetailsModel";
+import { Products } from "./productsModel";
+import { Customers } from "./customersModel";
 import {
   Entity,
   BaseEntity,
   Column,
   PrimaryColumn,
   OneToMany,
-  OneToOne,
+  ManyToOne,
   JoinColumn,
 } from "typeorm";
 
@@ -30,10 +32,10 @@ export class Orders extends BaseEntity {
   ShippedDate!: string;
 
   @Column()
-  ShipVia!: number;
+  ShipVia!: string;
 
   @Column()
-  Freight!: number;
+  Freight!: string;
 
   @Column()
   ShipName!: string;
@@ -53,10 +55,13 @@ export class Orders extends BaseEntity {
   @Column()
   ShipCountry!: string;
 
+  @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.order)
+  orderDetails!: OrderDetails[];
+
   @OneToMany(() => Products, (products) => products.orders)
   products: Products[] | undefined;
 
-  @OneToOne(() => Customers)
-  @JoinColumn()
-  orders!: Customers;
+  @ManyToOne(() => Customers, (customers) => customers.orders)
+  @JoinColumn({ name: "CustomerID" })
+  customers!: Customers;
 }

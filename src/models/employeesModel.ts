@@ -10,10 +10,13 @@ import {
 @Entity()
 export class Employees extends BaseEntity {
   @PrimaryColumn()
-  EmployeeId!: string;
+  EmployeeID!: string;
 
   @Column()
-  Name!: string;
+  LastName!: string;
+
+  @Column()
+  FirstName!: string;
 
   @Column()
   Title!: string;
@@ -34,7 +37,10 @@ export class Employees extends BaseEntity {
   City!: string;
 
   @Column()
-  PostalCode!: number;
+  Region!: string;
+
+  @Column()
+  PostalCode!: string;
 
   @Column()
   Country!: string;
@@ -43,15 +49,15 @@ export class Employees extends BaseEntity {
   HomePhone!: string;
 
   @Column()
-  Extension!: number;
+  Extension!: string;
 
   @Column()
   Notes!: string;
 
   @Column()
-  ReportTo!: string;
+  ReportsTo!: string;
 
-  @OneToOne(() => Employees, (reportsTo) => reportsTo.EmployeeId)
+  @OneToOne(() => Employees, (reportsTo) => reportsTo.EmployeeID)
   @JoinColumn({ name: "EmployeeID" })
-  ReportsTo: Employees | undefined;
+  reportsTo!: Employees | undefined;
 }

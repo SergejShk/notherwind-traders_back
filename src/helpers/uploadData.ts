@@ -1,27 +1,10 @@
-import fs from "fs/promises";
+import fs from "fs";
 import csvtojson from "csvtojson";
-// import { AppDataSource } from "../db/dbSourse";
-import { Customers } from "../models/customersModel";
-import { Employees } from "../models/employeesModel";
-import { Orders } from "../models/ordersModel";
-import { Products } from "../models/productsModel";
-import { Suppliers } from "../models/suppliersModel";
-
-interface ModelsType {
-  [key: string]: any;
-}
-
-const Models: ModelsType = {
-  Suppliers: new Suppliers(),
-  Products: new Products(),
-  Orders: new Orders(),
-  Employees: new Employees(),
-  Customers: new Customers(),
-};
+import { AppDataSource } from "../db/dbSourse";
 
 export const getFiles = async () => {
   try {
-    const files = await fs.readdir("data");
+    const files = await fs.promises.readdir("data");
 
     return files;
   } catch (err) {
@@ -30,26 +13,19 @@ export const getFiles = async () => {
 };
 
 const uploadFile = async (fileName: string) => {
-  const parsedFile = await csvtojson().fromFile(`data/${fileName}`);
-  const table = Models[getTableName(fileName)];
+  const dataByJSON = await csvtojson().fromFile(`data/${fileName}`);
 
-  //   const newTable = getTableName(fileName);
+  const tableName = getTableName(fileName);
 
-  console.log(parsedFile);
-  console.log(table);
+  // tableName === "Orders" && console.log(dataByJSON);
 
   try {
-    // await AppDataSource.createQueryBuilder()
-    //   .insert()
-    //   .into(table)
-    //   .values(parsedFile)
-    //   .execute();
-    //====================================================================//
-    // await AppDataSource.createQueryBuilder()
-    //   .insert()
-    //   .into(newTable)
-    //   .values(parsedFile)
-    //   .execute();
+    await AppDataSource.initialize();
+    await AppDataSource.createQueryBuilder()
+      .insert()
+      .into(tableName)
+      .values(dataByJSON)
+      .execute();
   } catch (err) {
     console.log(err);
   }
