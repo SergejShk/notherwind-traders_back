@@ -1,6 +1,21 @@
-import { Request, Response } from "express";
+import { Request, NextFunction } from "express";
+import { getAllSuppliers } from "services/suppliersService";
 
-export const getSuppliersController = (req: Request, res: Response) => {
-  console.log(req);
-  return res.status(200).json("Suppliers");
+export const getAllSuppliersController = async (
+  req: Request,
+  res: any,
+  next: NextFunction
+) => {
+  let { page } = req.body;
+  page = page || 1;
+  const take = 20;
+  let skip = page * take - take;
+
+  try {
+    const data = await getAllSuppliers(skip, take);
+
+    return res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
 };

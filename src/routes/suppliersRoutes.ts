@@ -1,8 +1,8 @@
 import express from "express";
-import { getSuppliersController } from "./../controllers/suppliersController";
+import { getAllSuppliersController } from "./../controllers/suppliersController";
 
 const router = express.Router();
 
-router.get("/", getSuppliersController);
+router.get("/", getAllSuppliersController);
 
 export default router;
