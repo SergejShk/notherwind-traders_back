@@ -6,8 +6,8 @@ export const getAllSuppliersController = async (
   res: any,
   next: NextFunction
 ) => {
-  let { page } = req.body;
-  page = page || 1;
+  let page = req.query.page ? Number(req.query.page) : 1;
+
   const take = 20;
   let skip = page * take - take;
 
