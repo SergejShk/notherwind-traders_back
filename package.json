@@ -7,6 +7,7 @@
     "node": "16.x"
   },
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "nodemon",
     "build": "tsc -p tsconfig.json",
     "uploadData": "node dist/helpers/uploadData.js"
