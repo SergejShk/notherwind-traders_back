@@ -2,12 +2,11 @@
   "name": "notherwind-back",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "engines": {
     "node": "16.x"
   },
   "scripts": {
-    "start": "node dist/server.js",
     "dev": "nodemon",
     "build": "tsc -p tsconfig.json",
     "uploadData": "node dist/helpers/uploadData.js"
