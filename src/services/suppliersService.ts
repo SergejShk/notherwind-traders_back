@@ -1,5 +1,5 @@
-import { AppDataSource } from "db/dbSourse";
-import { Suppliers } from "models/suppliersModel";
+import { AppDataSource } from "../db/dbSourse";
+import { Suppliers } from "../models/suppliersModel";
 
 const suppliersRepository = AppDataSource.getRepository(Suppliers);
 

@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import dotenv from "dotenv";
 import { app } from "./app";
-import { AppDataSource } from "db/dbSourse";
+import { AppDataSource } from "./db/dbSourse";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;

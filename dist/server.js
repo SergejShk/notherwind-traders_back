@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const dotenv_1 = __importDefault(require("dotenv"));
 const app_1 = require("./app");
-const dbSourse_1 = require("db/dbSourse");
+const dbSourse_1 = require("./db/dbSourse");
 dotenv_1.default.config();
 const PORT = process.env.PORT || 3000;
 const serverStart = () => __awaiter(void 0, void 0, void 0, function* () {

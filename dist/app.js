@@ -12,7 +12,7 @@ const productsRoutes_1 = __importDefault(require("./routes/productsRoutes"));
 const ordersRoutes_1 = __importDefault(require("./routes/ordersRoutes"));
 const employeesRoutes_1 = __importDefault(require("./routes/employeesRoutes"));
 const customersRoutes_1 = __importDefault(require("./routes/customersRoutes"));
-const errorHandlers_1 = require("helpers/errorHandlers");
+const errorHandlers_1 = require("./helpers/errorHandlers");
 exports.app = (0, express_1.default)();
 const formatsLogger = exports.app.get("env") === "development" ? "dev" : "short";
 exports.app.use((0, morgan_1.default)(formatsLogger));

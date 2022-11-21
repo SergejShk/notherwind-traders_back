@@ -6,7 +6,7 @@ import productsRouter from "./routes/productsRoutes";
 import ordersRouter from "./routes/ordersRoutes";
 import employeesRouter from "./routes/employeesRoutes";
 import customersRouter from "./routes/customersRoutes";
-import { errorHandler } from "helpers/errorHandlers";
+import { errorHandler } from "./helpers/errorHandlers";
 
 export const app = express();
 

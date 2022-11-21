@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllSuppliers = void 0;
-const dbSourse_1 = require("db/dbSourse");
-const suppliersModel_1 = require("models/suppliersModel");
+const dbSourse_1 = require("../db/dbSourse");
+const suppliersModel_1 = require("../models/suppliersModel");
 const suppliersRepository = dbSourse_1.AppDataSource.getRepository(suppliersModel_1.Suppliers);
 const getAllSuppliers = (skip, take) => __awaiter(void 0, void 0, void 0, function* () {
     const [data, total] = yield suppliersRepository.findAndCount({

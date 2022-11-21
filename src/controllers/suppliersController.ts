@@ -1,5 +1,5 @@
 import { Request, NextFunction } from "express";
-import { getAllSuppliers } from "services/suppliersService";
+import { getAllSuppliers } from "../services/suppliersService";
 
 export const getAllSuppliersController = async (
   req: Request,
