@@ -27,7 +27,8 @@
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.9.0",
-    "typeorm": "^0.3.10"
+    "typeorm": "^0.3.10",
+    "vercel": "^28.5.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
