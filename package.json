@@ -2,14 +2,16 @@
   "name": "notherwind-back",
   "version": "1.0.0",
   "description": "",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "engines": {
     "node": "16.x"
   },
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "nodemon",
     "build": "tsc -p tsconfig.json",
-    "uploadData": "node dist/helpers/uploadData.js"
+    "uploadData": "node dist/helpers/uploadData.js",
+    "deploy": "vercel deploy --prod"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +37,6 @@
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   }
 }

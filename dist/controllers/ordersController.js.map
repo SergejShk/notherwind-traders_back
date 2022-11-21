@@ -1,0 +1,1 @@
+{"version":3,"file":"ordersController.js","sourceRoot":"","sources":["../../src/controllers/ordersController.ts"],"names":[],"mappings":";;;AAEO,MAAM,mBAAmB,GAAG,CAAC,GAAY,EAAE,GAAa,EAAE,EAAE;IACjE,OAAO,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC;IACjB,OAAO,GAAG,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC,QAAQ,CAAC,CAAC;AACxC,CAAC,CAAC;AAHW,QAAA,mBAAmB,uBAG9B"}
