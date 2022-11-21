@@ -7,11 +7,11 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "vercel dev",
+    "deploy": "vercel deploy --prod",
     "dev": "nodemon",
     "build": "tsc -p tsconfig.json",
-    "uploadData": "node dist/helpers/uploadData.js",
-    "deploy": "vercel deploy --prod"
+    "uploadData": "node dist/helpers/uploadData.js"
   },
   "keywords": [],
   "author": "",
