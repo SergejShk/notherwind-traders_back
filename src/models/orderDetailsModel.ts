@@ -1,11 +1,11 @@
-import { Orders } from "./ordersModel";
-import { Products } from "./productsModel";
+// import { Orders } from "./ordersModel";
+// import { Products } from "./productsModel";
 import {
   Entity,
   BaseEntity,
   Column,
-  JoinColumn,
-  ManyToOne,
+  // JoinColumn,
+  // ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
@@ -29,11 +29,11 @@ export class OrderDetails extends BaseEntity {
   @Column()
   Discount!: string;
 
-  @ManyToOne(() => Orders, (order) => order.orderDetails)
-  @JoinColumn({ name: "OrderID" })
-  order!: Orders;
+  // @ManyToOne(() => Orders, (order) => order.orderDetails)
+  // @JoinColumn({ name: "OrderID" })
+  // order!: Orders;
 
-  @ManyToOne(() => Products, (product) => product.orderDetails)
-  @JoinColumn({ name: "ProductID" })
-  Product!: Products;
+  // @ManyToOne(() => Products, (product) => product.orderDetails)
+  // @JoinColumn({ name: "ProductID" })
+  // Product!: Products;
 }

@@ -3,8 +3,8 @@ import {
   BaseEntity,
   Column,
   PrimaryColumn,
-  OneToOne,
-  JoinColumn,
+  // OneToOne,
+  // JoinColumn,
 } from "typeorm";
 
 @Entity()
@@ -57,7 +57,7 @@ export class Employees extends BaseEntity {
   @Column()
   ReportsTo!: string;
 
-  @OneToOne(() => Employees, (reportsTo) => reportsTo.EmployeeID)
-  @JoinColumn({ name: "EmployeeID" })
-  reportsTo!: Employees | undefined;
+  // @OneToOne(() => Employees, (reportsTo) => reportsTo.EmployeeID)
+  // @JoinColumn({ name: "EmployeeID" })
+  // reportsTo!: Employees | undefined;
 }

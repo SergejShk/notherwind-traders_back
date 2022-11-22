@@ -18,6 +18,9 @@ const formatsLogger = exports.app.get("env") === "development" ? "dev" : "short"
 exports.app.use((0, morgan_1.default)(formatsLogger));
 exports.app.use((0, cors_1.default)());
 exports.app.use(express_1.default.json());
+exports.app.get("/", (_req, res, _next) => {
+    res.status(200).json("Seccessfully");
+});
 exports.app.use("/api/suppliers", suppliersRoutes_1.default);
 exports.app.use("/api/products", productsRoutes_1.default);
 exports.app.use("/api/orders", ordersRoutes_1.default);

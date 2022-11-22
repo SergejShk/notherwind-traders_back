@@ -1,14 +1,14 @@
-import { OrderDetails } from "./orderDetailsModel";
-import { Orders } from "./ordersModel";
-import { Suppliers } from "./suppliersModel";
+// import { OrderDetails } from "./orderDetailsModel";
+// import { Orders } from "./ordersModel";
+// import { Suppliers } from "./suppliersModel";
 import {
   Entity,
   BaseEntity,
   Column,
   PrimaryColumn,
-  ManyToOne,
-  JoinColumn,
-  OneToMany,
+  // ManyToOne,
+  // JoinColumn,
+  // OneToMany,
 } from "typeorm";
 
 @Entity()
@@ -43,14 +43,14 @@ export class Products extends BaseEntity {
   @Column()
   Discontinued!: string;
 
-  @ManyToOne(() => Suppliers, (suppliers) => suppliers.products)
-  @JoinColumn({ name: "SupplierID" })
-  suppliers!: Suppliers;
+  // @ManyToOne(() => Suppliers, (suppliers) => suppliers.products)
+  // @JoinColumn({ name: "SupplierID" })
+  // suppliers!: Suppliers;
 
-  @ManyToOne(() => Orders, (orders) => orders.products)
-  @JoinColumn({ name: "OrderID" })
-  orders: Orders | undefined;
+  // @ManyToOne(() => Orders, (orders) => orders.products)
+  // @JoinColumn({ name: "OrderID" })
+  // orders: Orders | undefined;
 
-  @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.Product)
-  orderDetails!: OrderDetails[];
+  // @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.Product)
+  // orderDetails!: OrderDetails[];
 }

@@ -1,5 +1,11 @@
-import { Products } from "./productsModel";
-import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany } from "typeorm";
+// import { Products } from "./productsModel";
+import {
+  Entity,
+  BaseEntity,
+  Column,
+  PrimaryColumn,
+  // OneToMany
+} from "typeorm";
 
 @Entity()
 export class Suppliers extends BaseEntity {
@@ -40,6 +46,6 @@ export class Suppliers extends BaseEntity {
   HomePage!: string;
   products: any;
 
-  @OneToMany(() => Products, (product) => product.suppliers)
-  product!: Products[];
+  // @OneToMany(() => Products, (product) => product.suppliers)
+  // product!: Products[];
 }
