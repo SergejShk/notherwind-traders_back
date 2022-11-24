@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (_req, res, _next) => {
-  res.status(200).json("Seccessfully");
+  res.status(200).json("Server conected seccessfully");
 });
 
 app.use("/api/suppliers", supplierRouter);
