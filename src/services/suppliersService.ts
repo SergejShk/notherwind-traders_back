@@ -11,3 +11,11 @@ export const getAllSuppliers = async (skip: number, take: number) => {
 
   return { total, data };
 };
+
+export const getSupplierById = async (id: string) => {
+  const data = await Suppliers.createQueryBuilder("suppliers")
+    .where("suppliers.SupplierID = :SupplierID", { SupplierID: id })
+    .getOne();
+
+  return data;
+};

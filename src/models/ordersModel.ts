@@ -1,14 +1,14 @@
-// import { OrderDetails } from "./orderDetailsModel";
-// import { Products } from "./productsModel";
-// import { Customers } from "./customersModel";
+import { OrderDetails } from "./orderDetailsModel";
+import { Products } from "./productsModel";
+import { Customers } from "./customersModel";
 import {
   Entity,
   BaseEntity,
   Column,
   PrimaryColumn,
-  // OneToMany,
-  // ManyToOne,
-  // JoinColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
 
 @Entity()
@@ -55,13 +55,13 @@ export class Orders extends BaseEntity {
   @Column()
   ShipCountry!: string;
 
-  // @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.order)
-  // orderDetails!: OrderDetails[];
+  @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.order)
+  orderDetails!: OrderDetails[];
 
-  // @OneToMany(() => Products, (products) => products.orders)
-  // products: Products[] | undefined;
+  @OneToMany(() => Products, (products) => products.orders)
+  products: Products[] | undefined;
 
-  // @ManyToOne(() => Customers, (customers) => customers.orders)
-  // @JoinColumn({ name: "CustomerID" })
-  // customers!: Customers;
+  @ManyToOne(() => Customers, (customers) => customers.orders)
+  @JoinColumn({ name: "CustomerID" })
+  customers!: Customers;
 }

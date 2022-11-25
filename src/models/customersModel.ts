@@ -1,11 +1,5 @@
-import {
-  Entity,
-  BaseEntity,
-  Column,
-  PrimaryColumn,
-  // OneToMany
-} from "typeorm";
-// import { Orders } from "./ordersModel";
+import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany } from "typeorm";
+import { Orders } from "./ordersModel";
 
 @Entity()
 export class Customers extends BaseEntity {
@@ -42,6 +36,6 @@ export class Customers extends BaseEntity {
   @Column()
   Fax!: string;
 
-  // @OneToMany(() => Orders, (orders) => orders.customers)
-  // orders!: Orders[];
+  @OneToMany(() => Orders, (orders) => orders.customers)
+  orders!: Orders[];
 }

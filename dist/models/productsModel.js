@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Products = void 0;
-// import { OrderDetails } from "./orderDetailsModel";
-// import { Orders } from "./ordersModel";
-// import { Suppliers } from "./suppliersModel";
+const orderDetailsModel_1 = require("./orderDetailsModel");
+const ordersModel_1 = require("./ordersModel");
+const suppliersModel_1 = require("./suppliersModel");
 const typeorm_1 = require("typeorm");
 let Products = class Products extends typeorm_1.BaseEntity {
 };
@@ -56,6 +56,20 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Products.prototype, "Discontinued", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => suppliersModel_1.Suppliers, (suppliers) => suppliers.products),
+    (0, typeorm_1.JoinColumn)({ name: "SupplierID" }),
+    __metadata("design:type", suppliersModel_1.Suppliers)
+], Products.prototype, "suppliers", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => ordersModel_1.Orders, (orders) => orders.products),
+    (0, typeorm_1.JoinColumn)({ name: "OrderID" }),
+    __metadata("design:type", Object)
+], Products.prototype, "orders", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => orderDetailsModel_1.OrderDetails, (orderDetails) => orderDetails.Product),
+    __metadata("design:type", Array)
+], Products.prototype, "orderDetails", void 0);
 Products = __decorate([
     (0, typeorm_1.Entity)()
 ], Products);

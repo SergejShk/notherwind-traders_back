@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const productsController_1 = require("./../controllers/productsController");
 const router = express_1.default.Router();
-router.get("/", productsController_1.getProductsController);
+router.get("/", productsController_1.getAllProductsController);
 exports.default = router;
 //# sourceMappingURL=productsRoutes.js.map

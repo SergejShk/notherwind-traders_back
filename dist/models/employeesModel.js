@@ -8,10 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var Employees_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Employees = void 0;
 const typeorm_1 = require("typeorm");
-let Employees = class Employees extends typeorm_1.BaseEntity {
+let Employees = Employees_1 = class Employees extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryColumn)(),
@@ -77,7 +78,12 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Employees.prototype, "ReportsTo", void 0);
-Employees = __decorate([
+__decorate([
+    (0, typeorm_1.OneToOne)(() => Employees_1, (reportsTo) => reportsTo.EmployeeID),
+    (0, typeorm_1.JoinColumn)({ name: "EmployeeID" }),
+    __metadata("design:type", Object)
+], Employees.prototype, "reportsTo", void 0);
+Employees = Employees_1 = __decorate([
     (0, typeorm_1.Entity)()
 ], Employees);
 exports.Employees = Employees;

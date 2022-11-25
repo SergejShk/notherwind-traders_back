@@ -19,7 +19,7 @@ exports.app.use((0, morgan_1.default)(formatsLogger));
 exports.app.use((0, cors_1.default)());
 exports.app.use(express_1.default.json());
 exports.app.get("/", (_req, res, _next) => {
-    res.status(200).json("Seccessfully");
+    res.status(200).json("Server conected seccessfully");
 });
 exports.app.use("/api/suppliers", suppliersRoutes_1.default);
 exports.app.use("/api/products", productsRoutes_1.default);

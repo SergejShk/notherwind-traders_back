@@ -1,1 +1,1 @@
-{"version":3,"file":"employeesRoutes.js","sourceRoot":"","sources":["../../src/routes/employeesRoutes.ts"],"names":[],"mappings":";;;;;AAAA,sDAA8B;AAC9B,8EAA8E;AAE9E,MAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAEhC,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,4CAAsB,CAAC,CAAC;AAExC,kBAAe,MAAM,CAAC"}
+{"version":3,"file":"employeesRoutes.js","sourceRoot":"","sources":["../../src/routes/employeesRoutes.ts"],"names":[],"mappings":";;;;;AAAA,sDAA8B;AAC9B,8EAAiF;AAEjF,MAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAEhC,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,+CAAyB,CAAC,CAAC;AAE3C,kBAAe,MAAM,CAAC"}
