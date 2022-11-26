@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllSuppliers = void 0;
+exports.getSupplierById = exports.getAllSuppliers = void 0;
 const dbSourse_1 = require("../db/dbSourse");
 const suppliersModel_1 = require("../models/suppliersModel");
 const suppliersRepository = dbSourse_1.AppDataSource.getRepository(suppliersModel_1.Suppliers);
@@ -21,4 +21,11 @@ const getAllSuppliers = (skip, take) => __awaiter(void 0, void 0, void 0, functi
     return { total, data };
 });
 exports.getAllSuppliers = getAllSuppliers;
+const getSupplierById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const data = yield suppliersModel_1.Suppliers.createQueryBuilder("suppliers")
+        .where("suppliers.SupplierID = :SupplierID", { SupplierID: id })
+        .getOne();
+    return data;
+});
+exports.getSupplierById = getSupplierById;
 //# sourceMappingURL=suppliersService.js.map

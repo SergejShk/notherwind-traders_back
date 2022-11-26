@@ -13,6 +13,8 @@ const ordersRoutes_1 = __importDefault(require("./routes/ordersRoutes"));
 const employeesRoutes_1 = __importDefault(require("./routes/employeesRoutes"));
 const customersRoutes_1 = __importDefault(require("./routes/customersRoutes"));
 const errorHandlers_1 = require("./helpers/errorHandlers");
+// import { getAllOrdersTest } from "./services/testService";
+// import { NextFunction, Request } from "express";
 exports.app = (0, express_1.default)();
 const formatsLogger = exports.app.get("env") === "development" ? "dev" : "short";
 exports.app.use((0, morgan_1.default)(formatsLogger));
@@ -21,6 +23,17 @@ exports.app.use(express_1.default.json());
 exports.app.get("/", (_req, res, _next) => {
     res.status(200).json("Server conected seccessfully");
 });
+// app.get("/test", async (req: Request, res: any, next: NextFunction) => {
+//   try {
+//     let page = req.query.page ? Number(req.query.page) : 1;
+//     const take = 20;
+//     let skip = page * take - take;
+//     const testData = await getAllOrdersTest(skip, take);
+//     res.status(200).json(testData);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 exports.app.use("/api/suppliers", suppliersRoutes_1.default);
 exports.app.use("/api/products", productsRoutes_1.default);
 exports.app.use("/api/orders", ordersRoutes_1.default);

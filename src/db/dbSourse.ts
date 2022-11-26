@@ -1,11 +1,16 @@
+import { DataSource } from "typeorm";
+import dotenv from "dotenv";
 import { Customers } from "./../models/customersModel";
 import { Employees } from "./../models/employeesModel";
 import { OrderDetails } from "./../models/orderDetailsModel";
 import { Orders } from "./../models/ordersModel";
 import { Products } from "./../models/productsModel";
 import { Suppliers } from "./../models/suppliersModel";
-import { DataSource } from "typeorm";
-import dotenv from "dotenv";
+import { Categories } from "./../models/categoriesModel";
+import { EmployeeTerritories } from "../models/employeesTerritoriesModel";
+import { Regions } from "./../models/regionsModel";
+import { Shippers } from "./../models/shippersModel";
+import { Territories } from "./../models/territoriesModel";
 
 dotenv.config();
 
@@ -19,7 +24,20 @@ export const AppDataSource = new DataSource({
   url: process.env.DATABASE_URL,
 
   synchronize: false,
-  entities: [Suppliers, Products, Orders, OrderDetails, Employees, Customers],
+  entities: [
+    Suppliers,
+    Products,
+    Orders,
+    OrderDetails,
+    Employees,
+    Customers,
+    Categories,
+    EmployeeTerritories,
+    Regions,
+    Shippers,
+    Territories,
+  ],
+
   ssl: {
     rejectUnauthorized: false,
   },

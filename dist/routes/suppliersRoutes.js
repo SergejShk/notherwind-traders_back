@@ -7,5 +7,6 @@ const express_1 = __importDefault(require("express"));
 const suppliersController_1 = require("./../controllers/suppliersController");
 const router = express_1.default.Router();
 router.get("/", suppliersController_1.getAllSuppliersController);
+router.get("/:id", suppliersController_1.getSupplierByIdController);
 exports.default = router;
 //# sourceMappingURL=suppliersRoutes.js.map

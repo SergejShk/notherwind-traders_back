@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllSuppliersController = void 0;
+exports.getSupplierByIdController = exports.getAllSuppliersController = void 0;
 const suppliersService_1 = require("../services/suppliersService");
 const getAllSuppliersController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let page = req.query.page ? Number(req.query.page) : 1;
@@ -24,4 +24,16 @@ const getAllSuppliersController = (req, res, next) => __awaiter(void 0, void 0, 
     }
 });
 exports.getAllSuppliersController = getAllSuppliersController;
+const getSupplierByIdController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    console.log(id);
+    try {
+        const supplier = yield (0, suppliersService_1.getSupplierById)(id);
+        return res.status(200).json(supplier);
+    }
+    catch (error) {
+        next(error);
+    }
+});
+exports.getSupplierByIdController = getSupplierByIdController;
 //# sourceMappingURL=suppliersController.js.map
