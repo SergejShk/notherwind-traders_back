@@ -1,8 +1,13 @@
 import express from "express";
-import { getAllCustomersController } from "./../controllers/customersController";
+import {
+  getAllCustomersController,
+  getCustomerByIdController,
+} from "./../controllers/customersController";
 
 const router = express.Router();
 
 router.get("/", getAllCustomersController);
+
+router.get("/:id", getCustomerByIdController);
 
 export default router;

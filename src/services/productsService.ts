@@ -20,6 +20,7 @@ export const getProductById = async (id: string) => {
 
   const result = Object.entries(data || []).reduce((acc: any, [key, value]) => {
     if (key === "SupplierID") {
+      acc[key] = value;
       acc.Supplier = data?.suppliers.CompanyName;
     } else if (key === "suppliers") {
     } else if (key === "UnitPrice") {
