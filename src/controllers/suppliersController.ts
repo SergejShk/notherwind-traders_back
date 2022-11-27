@@ -26,7 +26,6 @@ export const getSupplierByIdController = async (
   next: NextFunction
 ) => {
   const id = req.params.id;
-  console.log(id);
 
   try {
     const supplier = await getSupplierById(id);

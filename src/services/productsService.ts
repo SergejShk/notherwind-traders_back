@@ -11,3 +11,25 @@ export const getAllProducts = async (skip: number, take: number) => {
 
   return { total, data };
 };
+
+export const getProductById = async (id: string) => {
+  const data = await Products.createQueryBuilder("products")
+    .leftJoinAndSelect("products.suppliers", "suppliers")
+    .where("products.ProductID = :ProductID", { ProductID: id })
+    .getOne();
+
+  const result = Object.entries(data || []).reduce((acc: any, [key, value]) => {
+    if (key === "SupplierID") {
+      acc.Supplier = data?.suppliers.CompanyName;
+    } else if (key === "suppliers") {
+    } else if (key === "UnitPrice") {
+      acc[key] = `$${value}`;
+    } else {
+      acc[key] = value;
+    }
+
+    return acc;
+  }, {});
+
+  return result;
+};
