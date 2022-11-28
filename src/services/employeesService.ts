@@ -27,14 +27,15 @@ export const getEmployeeById = async (id: string) => {
     HireDate: data?.HireDate,
     Address: data?.Address,
     City: data?.City,
-    Region: data?.Region,
     PostalCode: data?.PostalCode,
     Country: data?.Country,
     HomePhone: data?.HomePhone,
     Extension: data?.Extension,
     Notes: data?.Notes,
-    ReportsToID: data?.ReportsTo,
-    ReportsTo: data?.reportsTo?.FirstName + " " + data?.reportsTo?.LastName,
+    ReportsToID: data?.ReportsTo ? data?.ReportsTo : "",
+    ReportsTo: data?.ReportsTo
+      ? data?.reportsTo?.FirstName + " " + data?.reportsTo?.LastName
+      : "",
   };
 
   return employee;
