@@ -1,3 +1,4 @@
+import { Shippers } from "./shippersModel";
 import { OrderDetails } from "./orderDetailsModel";
 import { Products } from "./productsModel";
 import { Customers } from "./customersModel";
@@ -64,4 +65,8 @@ export class Orders extends BaseEntity {
   @ManyToOne(() => Customers, (customers) => customers.orders)
   @JoinColumn({ name: "CustomerID" })
   customers!: Customers;
+
+  @ManyToOne(() => Shippers, (shippers) => shippers.orders)
+  @JoinColumn({ name: "ShipVia" })
+  shippers!: Shippers;
 }

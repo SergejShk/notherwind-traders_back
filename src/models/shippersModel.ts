@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
+import { Orders } from './ordersModel';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  PrimaryColumn,
+  OneToMany,
+} from "typeorm";
 
 @Entity()
 export class Shippers extends BaseEntity {
@@ -10,4 +18,8 @@ export class Shippers extends BaseEntity {
 
   @Column()
   Phone!: string;
+
+  @OneToMany(() => Orders, (orders) => orders.shippers)
+  @JoinColumn({ name: "ShipperID" })
+  orders!: Orders[];
 }

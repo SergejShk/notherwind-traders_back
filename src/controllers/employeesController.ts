@@ -28,9 +28,9 @@ export const getEmployeeByIdController = async (
   const id = req.params.id;
 
   try {
-    const product = await getEmployeeById(id);
+    const employee = await getEmployeeById(id);
 
-    return res.status(200).json(product);
+    return res.status(200).json(employee);
   } catch (error) {
     next(error);
   }

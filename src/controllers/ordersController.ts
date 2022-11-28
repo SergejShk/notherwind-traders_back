@@ -1,5 +1,5 @@
 import { NextFunction, Request } from "express";
-import { getAllOrders } from "../services/ordersService";
+import { getAllOrders, getOrderById } from "../services/ordersService";
 
 export const getAllOrdersController = async (
   req: Request,
@@ -15,6 +15,22 @@ export const getAllOrdersController = async (
     const data = await getAllOrders(skip, take);
 
     return res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getOrderByIdController = async (
+  req: Request,
+  res: any,
+  next: NextFunction
+) => {
+  const id = req.params.id;
+
+  try {
+    const order = await getOrderById(id);
+
+    return res.status(200).json(order);
   } catch (error) {
     next(error);
   }
