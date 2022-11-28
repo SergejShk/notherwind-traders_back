@@ -51,6 +51,6 @@ export const getOrderById = async (id: string) => {
 
     orderProducts: data?.orderDetails ? [...data.orderDetails] : [],
   };
-  console.log(data?.shippers);
+
   return order;
 };

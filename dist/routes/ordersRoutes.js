@@ -7,5 +7,6 @@ const express_1 = __importDefault(require("express"));
 const ordersController_1 = require("./../controllers/ordersController");
 const router = express_1.default.Router();
 router.get("/", ordersController_1.getAllOrdersController);
+router.get("/:id", ordersController_1.getOrderByIdController);
 exports.default = router;
 //# sourceMappingURL=ordersRoutes.js.map

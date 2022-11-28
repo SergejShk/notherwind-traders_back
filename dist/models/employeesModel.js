@@ -79,8 +79,8 @@ __decorate([
     __metadata("design:type", String)
 ], Employees.prototype, "ReportsTo", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => Employees_1, (reportsTo) => reportsTo.EmployeeID),
-    (0, typeorm_1.JoinColumn)({ name: "EmployeeID" }),
+    (0, typeorm_1.ManyToOne)(() => Employees_1, (employee) => employee.reportsTo),
+    (0, typeorm_1.JoinColumn)({ name: "ReportsTo" }),
     __metadata("design:type", Object)
 ], Employees.prototype, "reportsTo", void 0);
 Employees = Employees_1 = __decorate([

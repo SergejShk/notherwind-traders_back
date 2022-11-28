@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllEmployeesController = void 0;
+exports.getEmployeeByIdController = exports.getAllEmployeesController = void 0;
 const employeesService_1 = require("../services/employeesService");
 const getAllEmployeesController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let page = req.query.page ? Number(req.query.page) : 1;
@@ -24,4 +24,15 @@ const getAllEmployeesController = (req, res, next) => __awaiter(void 0, void 0, 
     }
 });
 exports.getAllEmployeesController = getAllEmployeesController;
+const getEmployeeByIdController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    try {
+        const employee = yield (0, employeesService_1.getEmployeeById)(id);
+        return res.status(200).json(employee);
+    }
+    catch (error) {
+        next(error);
+    }
+});
+exports.getEmployeeByIdController = getEmployeeByIdController;
 //# sourceMappingURL=employeesController.js.map

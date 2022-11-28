@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllOrdersController = void 0;
+exports.getOrderByIdController = exports.getAllOrdersController = void 0;
 const ordersService_1 = require("../services/ordersService");
 const getAllOrdersController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let page = req.query.page ? Number(req.query.page) : 1;
@@ -24,4 +24,15 @@ const getAllOrdersController = (req, res, next) => __awaiter(void 0, void 0, voi
     }
 });
 exports.getAllOrdersController = getAllOrdersController;
+const getOrderByIdController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    try {
+        const order = yield (0, ordersService_1.getOrderById)(id);
+        return res.status(200).json(order);
+    }
+    catch (error) {
+        next(error);
+    }
+});
+exports.getOrderByIdController = getOrderByIdController;
 //# sourceMappingURL=ordersController.js.map

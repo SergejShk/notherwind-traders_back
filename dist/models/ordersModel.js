@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Orders = void 0;
+const shippersModel_1 = require("./shippersModel");
 const orderDetailsModel_1 = require("./orderDetailsModel");
 const productsModel_1 = require("./productsModel");
 const customersModel_1 = require("./customersModel");
@@ -85,6 +86,11 @@ __decorate([
     (0, typeorm_1.JoinColumn)({ name: "CustomerID" }),
     __metadata("design:type", customersModel_1.Customers)
 ], Orders.prototype, "customers", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => shippersModel_1.Shippers, (shippers) => shippers.orders),
+    (0, typeorm_1.JoinColumn)({ name: "ShipVia" }),
+    __metadata("design:type", shippersModel_1.Shippers)
+], Orders.prototype, "shippers", void 0);
 Orders = __decorate([
     (0, typeorm_1.Entity)()
 ], Orders);

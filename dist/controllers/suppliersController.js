@@ -26,7 +26,6 @@ const getAllSuppliersController = (req, res, next) => __awaiter(void 0, void 0, 
 exports.getAllSuppliersController = getAllSuppliersController;
 const getSupplierByIdController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
-    console.log(id);
     try {
         const supplier = yield (0, suppliersService_1.getSupplierById)(id);
         return res.status(200).json(supplier);
