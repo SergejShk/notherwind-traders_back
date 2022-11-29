@@ -11,7 +11,7 @@ const sumTotalPrice = (data: any[]) => {
     return total + Number(el.Quantity) * Number(el.UnitPrice);
   }, 0);
 
-  return "$" + String(result);
+  return "$" + result.toFixed(2);
 };
 
 const sumTotalDiscount = (data: any[]) => {
@@ -21,7 +21,7 @@ const sumTotalDiscount = (data: any[]) => {
     );
   }, 0);
 
-  return result === 0 ? "0.00" : "$" + String(result);
+  return result === 0 ? "$0.00" : "$" + result.toFixed(2);
 };
 
 const preparedOrderProducts = (data: {}[]) => {
@@ -52,7 +52,7 @@ export const getPreparedDataOrder = (data: any) => {
       TotalPrice: data?.orderDetails ? sumTotalPrice(data?.orderDetails) : "",
       TotalDiscount: data?.orderDetails
         ? sumTotalDiscount(data?.orderDetails)
-        : "0.00",
+        : "$0.00",
       ShipVia: data?.shippers.CompanyName,
       Freight: "$" + data?.Freight,
       OrderDate: data?.OrderDate.split(" ")[0],
@@ -68,4 +68,19 @@ export const getPreparedDataOrder = (data: any) => {
       ? preparedOrderProducts(data.orderDetails)
       : [],
   };
+};
+
+export const getPreparedAllOrders = (data: any) => {
+  return data.map((order: any) => {
+    return {
+      OrderID: order.OrderID,
+      TotalPrice: order?.orderDetails ? sumTotalPrice(order?.orderDetails) : "",
+      Products: String(order?.orderDetails.length),
+      Quantity: order?.orderDetails ? sum("Quantity", order?.orderDetails) : "",
+      OrderDate: order.OrderDate,
+      ShipName: order.ShipName,
+      ShipCity: order.ShipCity,
+      ShipCountry: order.ShipCountry,
+    };
+  });
 };
