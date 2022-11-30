@@ -34,3 +34,15 @@ export const getProductById = async (id: string) => {
 
   return result;
 };
+
+export const getProductsBySearch = async (query: any) => {
+  const builder = Products.createQueryBuilder("products");
+  builder
+    .where("LOWER(products.ProductName) LIKE LOWER(:query)", {
+      query: `%${query}%`,
+    })
+    .limit(50);
+  const data = await builder.getMany();
+
+  return data;
+};
