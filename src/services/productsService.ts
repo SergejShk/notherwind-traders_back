@@ -1,22 +1,23 @@
-import { AppDataSource } from "../db/dbSourse";
 import { Products } from "../models/productsModel";
 
-const productsRepository = AppDataSource.getRepository(Products);
-
 export const getAllProducts = async (skip: number, take: number) => {
-  const [data, total] = await productsRepository.findAndCount({
-    skip,
-    take,
-  });
+  const builder = Products.createQueryBuilder("products");
 
-  return { total, data };
+  const total = await builder.getCount();
+  const data = await builder.take(take).skip(skip).getMany();
+  const sql = builder.getSql();
+
+  return { stats: { sql }, total, data };
 };
 
 export const getProductById = async (id: string) => {
-  const data = await Products.createQueryBuilder("products")
+  const builder = Products.createQueryBuilder("products");
+
+  const data = await builder
     .leftJoinAndSelect("products.suppliers", "suppliers")
     .where("products.ProductID = :ProductID", { ProductID: id })
     .getOne();
+  const sql = builder.getSql();
 
   const result = Object.entries(data || []).reduce((acc: any, [key, value]) => {
     if (key === "SupplierID") {
@@ -32,7 +33,7 @@ export const getProductById = async (id: string) => {
     return acc;
   }, {});
 
-  return result;
+  return { stats: { sql }, data: result };
 };
 
 export const getProductsBySearch = async (query: any) => {
@@ -55,5 +56,5 @@ export const getProductsBySearch = async (query: any) => {
     };
   });
 
-  return { dataLog: { sql }, data };
+  return { stats: { sql }, data };
 };

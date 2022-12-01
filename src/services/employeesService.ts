@@ -1,22 +1,23 @@
-import { AppDataSource } from "../db/dbSourse";
 import { Employees } from "../models/employeesModel";
 
-const employeesRepository = AppDataSource.getRepository(Employees);
-
 export const getAllEmployees = async (skip: number, take: number) => {
-  const [data, total] = await employeesRepository.findAndCount({
-    skip,
-    take,
-  });
+  const builder = Employees.createQueryBuilder("employees");
 
-  return { total, data };
+  const total = await builder.getCount();
+  const data = await builder.take(take).skip(skip).getMany();
+  const sql = builder.getSql();
+
+  return { stats: { sql }, total, data };
 };
 
 export const getEmployeeById = async (id: string) => {
-  const data = await Employees.createQueryBuilder("employees")
+  const builder = Employees.createQueryBuilder("employees");
+
+  const data = await builder
     .leftJoinAndSelect("employees.reportsTo", "reportsTo")
     .where("employees.EmployeeID = :EmployeeID", { EmployeeID: id })
     .getOne();
+  const sql = builder.getSql();
 
   const employee = {
     EmployeeID: data?.EmployeeID,
@@ -38,5 +39,5 @@ export const getEmployeeById = async (id: string) => {
       : "",
   };
 
-  return employee;
+  return { stats: { sql }, data: employee };
 };

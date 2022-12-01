@@ -1,21 +1,22 @@
-import { AppDataSource } from "../db/dbSourse";
 import { Suppliers } from "../models/suppliersModel";
 
-const suppliersRepository = AppDataSource.getRepository(Suppliers);
-
 export const getAllSuppliers = async (skip: number, take: number) => {
-  const [data, total] = await suppliersRepository.findAndCount({
-    skip,
-    take,
-  });
+  const builder = Suppliers.createQueryBuilder("suppliers");
 
-  return { total, data };
+  const total = await builder.getCount();
+  const data = await builder.take(take).skip(skip).getMany();
+  const sql = builder.getSql();
+
+  return { stats: { sql }, total, data };
 };
 
 export const getSupplierById = async (id: string) => {
-  const data = await Suppliers.createQueryBuilder("suppliers")
+  const builder = Suppliers.createQueryBuilder("suppliers");
+
+  const data = await builder
     .where("suppliers.SupplierID = :SupplierID", { SupplierID: id })
     .getOne();
+  const sql = builder.getSql();
 
-  return data;
+  return { stats: { sql }, data };
 };

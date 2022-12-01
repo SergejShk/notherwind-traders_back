@@ -1,23 +1,23 @@
-import { AppDataSource } from "../db/dbSourse";
 import { Customers } from "../models/customersModel";
 
-const customersRepository = AppDataSource.getRepository(Customers);
-
 export const getAllCustomers = async (skip: number, take: number) => {
-  const [data, total] = await customersRepository.findAndCount({
-    skip,
-    take,
-  });
+  const builder = Customers.createQueryBuilder("customers");
 
-  return { total, data };
+  const total = await builder.getCount();
+  const data = await builder.take(take).skip(skip).getMany();
+  const sql = builder.getSql();
+
+  return { stats: { sql }, total, data };
 };
 
 export const getCustomerById = async (id: string) => {
-  const data = await Customers.createQueryBuilder("customers")
+  const builder = Customers.createQueryBuilder("customers");
+  const data = await builder
     .where("customers.CustomerID = :CustomerID", { CustomerID: id })
     .getOne();
+  const sql = builder.getSql();
 
-  return data;
+  return { stats: { sql }, data };
 };
 
 export const getCustomersBySearch = async (query: any) => {
@@ -46,5 +46,5 @@ export const getCustomersBySearch = async (query: any) => {
     };
   });
 
-  return { dataLog: { sql }, data };
+  return { stats: { sql }, data };
 };
