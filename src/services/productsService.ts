@@ -42,7 +42,18 @@ export const getProductsBySearch = async (query: any) => {
       query: `%${query}%`,
     })
     .limit(50);
-  const data = await builder.getMany();
+  const dataProducts = await builder.getMany();
+  const sql = builder.getSql();
 
-  return data;
+  const data = dataProducts.map((product) => {
+    return {
+      ProductID: product.ProductID,
+      ProductName: product.ProductName,
+      QuantityPerUnit: product.QuantityPerUnit,
+      UnitPrice: product.UnitPrice,
+      UnitsInStock: product.UnitsInStock,
+    };
+  });
+
+  return { dataLog: { sql }, data };
 };
