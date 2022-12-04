@@ -1,6 +1,7 @@
 import { getPreparedAllOrders } from "./../helpers/prepareDataOrders";
 import { Orders } from "../models/ordersModel";
 import { getPreparedDataOrder } from "../helpers/prepareDataOrders";
+import { NotFoundError } from "helpers/errors";
 
 export const getAllOrders = async (skip: number, take: number) => {
   const builder = Orders.createQueryBuilder("orders");
@@ -48,6 +49,10 @@ export const getOrderById = async (id: string) => {
 
   const end = process.hrtime(start);
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
+  if (!data) {
+    throw new NotFoundError("Not found");
+  }
 
   const order = getPreparedDataOrder(data);
 

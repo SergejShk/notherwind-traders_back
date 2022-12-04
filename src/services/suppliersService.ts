@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors";
 import { Suppliers } from "../models/suppliersModel";
 
 export const getAllSuppliers = async (skip: number, take: number) => {
@@ -37,6 +38,10 @@ export const getSupplierById = async (id: string) => {
 
   const end = process.hrtime(start);
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
+  if (!data) {
+    throw new NotFoundError("Not found");
+  }
 
   return {
     metrics: {

@@ -16,10 +16,6 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (_req, res, _next) => {
-  res.status(200).json("Server conected seccessfully");
-});
-
 app.use("/api/suppliers", supplierRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/orders", ordersRouter);

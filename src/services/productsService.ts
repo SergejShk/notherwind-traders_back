@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors";
 import { Products } from "../models/productsModel";
 
 export const getAllProducts = async (skip: number, take: number) => {
@@ -39,6 +40,10 @@ export const getProductById = async (id: string) => {
   const end = process.hrtime(start);
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
 
+  if (!data) {
+    throw new NotFoundError("Not found");
+  }
+
   const result = Object.entries(data || []).reduce((acc: any, [key, value]) => {
     if (key === "SupplierID") {
       acc[key] = value;
@@ -79,6 +84,10 @@ export const getProductsBySearch = async (query: any) => {
 
   const end = process.hrtime(start);
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
+  if (!dataProducts || dataProducts.length === 0) {
+    throw new NotFoundError("Not found");
+  }
 
   const data = dataProducts.map((product) => {
     return {

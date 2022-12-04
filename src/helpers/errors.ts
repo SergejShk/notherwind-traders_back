@@ -6,3 +6,10 @@ export class CustomError extends Error {
     this.status = 400;
   }
 }
+
+export class NotFoundError extends CustomError {
+  constructor(message: string) {
+    super(message);
+    this.status = 404;
+  }
+}

@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors";
 import { Customers } from "../models/customersModel";
 
 export const getAllCustomers = async (skip: number, take: number) => {
@@ -38,6 +39,10 @@ export const getCustomerById = async (id: string) => {
   const end = process.hrtime(start);
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
 
+  if (!data) {
+    throw new NotFoundError("Not found");
+  }
+
   return {
     metrics: {
       resultCount: 1,
@@ -70,6 +75,10 @@ export const getCustomersBySearch = async (query: any) => {
 
   const end = process.hrtime(start);
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
+  if (!dataCustomers || dataCustomers.length === 0) {
+    throw new NotFoundError("Not found");
+  }
 
   const data = dataCustomers.map((customer) => {
     return {

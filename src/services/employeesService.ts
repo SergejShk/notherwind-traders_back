@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors";
 import { Employees } from "../models/employeesModel";
 
 export const getAllEmployees = async (skip: number, take: number) => {
@@ -38,6 +39,10 @@ export const getEmployeeById = async (id: string) => {
 
   const end = process.hrtime(start);
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
+  if (!data) {
+    throw new NotFoundError("Not found");
+  }
 
   const employee = {
     EmployeeID: data?.EmployeeID,
