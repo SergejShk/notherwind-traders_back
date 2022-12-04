@@ -5,6 +5,9 @@ import { getPreparedDataOrder } from "../helpers/prepareDataOrders";
 export const getAllOrders = async (skip: number, take: number) => {
   const builder = Orders.createQueryBuilder("orders");
 
+  const date = new Date().toISOString();
+  const start = process.hrtime();
+
   const total = await builder.getCount();
   const data = await builder
     .leftJoinAndSelect("orders.orderDetails", "orderDetails")
@@ -13,13 +16,27 @@ export const getAllOrders = async (skip: number, take: number) => {
     .getMany();
   const sql = builder.getSql();
 
+  const end = process.hrtime(start);
+  const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
   const preparedData = getPreparedAllOrders(data);
 
-  return { stats: { sql }, total, data: preparedData };
+  return {
+    metrics: {
+      resultCount: data.length,
+      type: ["selectWithJoin"],
+    },
+    stats: { date, duration, sql },
+    total,
+    data: preparedData,
+  };
 };
 
 export const getOrderById = async (id: string) => {
   const builder = Orders.createQueryBuilder("orders");
+
+  const date = new Date().toISOString();
+  const start = process.hrtime();
 
   const data = await builder
     .leftJoinAndSelect("orders.orderDetails", "orderDetails")
@@ -29,7 +46,17 @@ export const getOrderById = async (id: string) => {
     .getOne();
   const sql = builder.getSql();
 
+  const end = process.hrtime(start);
+  const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
   const order = getPreparedDataOrder(data);
 
-  return { stats: { sql }, data: order };
+  return {
+    metrics: {
+      resultCount: 1,
+      type: ["selectWithJoin"],
+    },
+    stats: { date, duration, sql },
+    data: order,
+  };
 };

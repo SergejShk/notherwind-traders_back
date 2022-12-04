@@ -3,21 +3,41 @@ import { Products } from "../models/productsModel";
 export const getAllProducts = async (skip: number, take: number) => {
   const builder = Products.createQueryBuilder("products");
 
+  const date = new Date().toISOString();
+  const start = process.hrtime();
+
   const total = await builder.getCount();
   const data = await builder.take(take).skip(skip).getMany();
   const sql = builder.getSql();
 
-  return { stats: { sql }, total, data };
+  const end = process.hrtime(start);
+  const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
+
+  return {
+    metrics: {
+      resultCount: data.length,
+      type: ["select"],
+    },
+    stats: { date, duration, sql },
+    total,
+    data,
+  };
 };
 
 export const getProductById = async (id: string) => {
   const builder = Products.createQueryBuilder("products");
+
+  const date = new Date().toISOString();
+  const start = process.hrtime();
 
   const data = await builder
     .leftJoinAndSelect("products.suppliers", "suppliers")
     .where("products.ProductID = :ProductID", { ProductID: id })
     .getOne();
   const sql = builder.getSql();
+
+  const end = process.hrtime(start);
+  const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
 
   const result = Object.entries(data || []).reduce((acc: any, [key, value]) => {
     if (key === "SupplierID") {
@@ -33,11 +53,22 @@ export const getProductById = async (id: string) => {
     return acc;
   }, {});
 
-  return { stats: { sql }, data: result };
+  return {
+    metrics: {
+      resultCount: 1,
+      type: ["selectWithJoin"],
+    },
+    stats: { date, duration, sql },
+    data: result,
+  };
 };
 
 export const getProductsBySearch = async (query: any) => {
   const builder = Products.createQueryBuilder("products");
+
+  const date = new Date().toISOString();
+  const start = process.hrtime();
+
   builder
     .where("LOWER(products.ProductName) LIKE LOWER(:query)", {
       query: `%${query}%`,
@@ -45,6 +76,9 @@ export const getProductsBySearch = async (query: any) => {
     .limit(50);
   const dataProducts = await builder.getMany();
   const sql = builder.getSql();
+
+  const end = process.hrtime(start);
+  const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
 
   const data = dataProducts.map((product) => {
     return {
@@ -56,5 +90,12 @@ export const getProductsBySearch = async (query: any) => {
     };
   });
 
-  return { stats: { sql }, data };
+  return {
+    metrics: {
+      resultCount: data.length,
+      type: ["selectWhere"],
+    },
+    stats: { date, duration, sql },
+    data,
+  };
 };
