@@ -1,4 +1,4 @@
-import { NotFoundError } from "helpers/errors";
+import { NotFoundError } from "../helpers/errors";
 import { Suppliers } from "../models/suppliersModel";
 
 export const getAllSuppliers = async (skip: number, take: number) => {
