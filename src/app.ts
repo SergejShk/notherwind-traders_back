@@ -1,12 +1,12 @@
 import express from "express";
 import logger from "morgan";
 import cors from "cors";
-import employeesRouter from "./routes/employees";
-import customersRouter from "./routes/customers";
 import { errorHandler } from "./utils/errorHandlers";
 import suppliers from "./controllers/suppliers";
 import products from "./controllers/products";
 import orders from "./controllers/orders";
+import employees from "./controllers/employees";
+import customers from "./controllers/customers";
 
 export const app = express();
 
@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(suppliers.path, suppliers.router);
 app.use(products.path, products.router);
 app.use(orders.path, orders.router);
-app.use("/api/employees", employeesRouter);
-app.use("/api/customers", customersRouter);
+app.use(employees.path, employees.router);
+app.use(customers.path, customers.router);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Not Found" });
