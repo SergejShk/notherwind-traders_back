@@ -1,10 +1,10 @@
-import { Products } from "./productsModel";
 import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany } from "typeorm";
+import { Orders } from "./orders";
 
 @Entity()
-export class Suppliers extends BaseEntity {
+export class Customers extends BaseEntity {
   @PrimaryColumn()
-  SupplierID!: string;
+  CustomerID!: string;
 
   @Column()
   CompanyName!: string;
@@ -36,10 +36,6 @@ export class Suppliers extends BaseEntity {
   @Column()
   Fax!: string;
 
-  @Column()
-  HomePage!: string;
-  products: any;
-
-  @OneToMany(() => Products, (product) => product.suppliers)
-  product!: Products[];
+  @OneToMany(() => Orders, (orders) => orders.customers)
+  orders!: Orders[];
 }

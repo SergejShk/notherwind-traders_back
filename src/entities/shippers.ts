@@ -1,4 +1,4 @@
-import { Orders } from './ordersModel';
+import { Orders } from "./orders";
 import {
   BaseEntity,
   Column,

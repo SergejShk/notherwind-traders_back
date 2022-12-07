@@ -1,7 +1,7 @@
-import { Shippers } from "./shippersModel";
-import { OrderDetails } from "./orderDetailsModel";
-import { Products } from "./productsModel";
-import { Customers } from "./customersModel";
+import { Shippers } from "./shippers";
+import { OrderDetails } from "./orderDetails";
+import { Products } from "./products";
+import { Customers } from "./customers";
 import {
   Entity,
   BaseEntity,

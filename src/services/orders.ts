@@ -1,7 +1,7 @@
-import { getPreparedAllOrders } from "./../helpers/prepareDataOrders";
-import { Orders } from "../models/ordersModel";
-import { getPreparedDataOrder } from "../helpers/prepareDataOrders";
-import { NotFoundError } from "../helpers/errors";
+import { getPreparedAllOrders } from "../utils/prepareDataOrders";
+import { Orders } from "../entities/orders";
+import { getPreparedDataOrder } from "../utils/prepareDataOrders";
+import { NotFoundError } from "../utils/errors";
 
 export const getAllOrders = async (skip: number, take: number) => {
   const builder = Orders.createQueryBuilder("orders");

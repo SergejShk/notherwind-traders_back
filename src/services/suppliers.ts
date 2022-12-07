@@ -1,5 +1,5 @@
-import { NotFoundError } from "../helpers/errors";
-import { Suppliers } from "../models/suppliersModel";
+import { NotFoundError } from "../utils/errors";
+import { Suppliers } from "../entities/suppliers";
 
 export const getAllSuppliers = async (skip: number, take: number) => {
   const builder = Suppliers.createQueryBuilder("suppliers");
@@ -40,7 +40,7 @@ export const getSupplierById = async (id: string) => {
   const duration = `${(end[0] * 1000000000 + end[1]) / 1000000} ms`;
 
   if (!data) {
-    throw new NotFoundError("Not found");
+    throw new NotFoundError("Supplier not found");
   }
 
   return {

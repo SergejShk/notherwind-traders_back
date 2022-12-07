@@ -1,5 +1,5 @@
-import { NotFoundError } from "../helpers/errors";
-import { Products } from "../models/productsModel";
+import { NotFoundError } from "../utils/errors";
+import { Products } from "../entities/products";
 
 export const getAllProducts = async (skip: number, take: number) => {
   const builder = Products.createQueryBuilder("products");

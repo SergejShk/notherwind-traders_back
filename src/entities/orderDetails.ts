@@ -1,5 +1,5 @@
-import { Orders } from "./ordersModel";
-import { Products } from "./productsModel";
+import { Orders } from "./orders";
+import { Products } from "./products";
 import {
   Entity,
   BaseEntity,

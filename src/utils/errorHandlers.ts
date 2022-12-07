@@ -1,4 +1,4 @@
-import { NextFunction, Request } from "express";
+import { Request, RequestHandler } from "express";
 import { CustomError } from "./errors";
 
 export const errorHandler = (err: Error, _req: Request, res: any) => {
@@ -9,8 +9,8 @@ export const errorHandler = (err: Error, _req: Request, res: any) => {
   res.status(500).json({ message: err.message });
 };
 
-export const asyncWrapper = (controller: any) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+export const asyncWrapper = (controller: any): RequestHandler => {
+  return (req, res, next) => {
     controller(req, res).catch(next);
   };
 };

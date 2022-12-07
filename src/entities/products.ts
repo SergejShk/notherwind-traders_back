@@ -1,6 +1,6 @@
-import { OrderDetails } from "./orderDetailsModel";
-import { Orders } from "./ordersModel";
-import { Suppliers } from "./suppliersModel";
+import { OrderDetails } from "./orderDetails";
+import { Orders } from "./orders";
+import { Suppliers } from "./suppliers";
 import {
   Entity,
   BaseEntity,

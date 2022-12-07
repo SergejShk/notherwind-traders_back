@@ -1,16 +1,16 @@
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
-import { Customers } from "./../models/customersModel";
-import { Employees } from "./../models/employeesModel";
-import { OrderDetails } from "./../models/orderDetailsModel";
-import { Orders } from "./../models/ordersModel";
-import { Products } from "./../models/productsModel";
-import { Suppliers } from "./../models/suppliersModel";
-import { Categories } from "./../models/categoriesModel";
-import { EmployeeTerritories } from "../models/employeesTerritoriesModel";
-import { Regions } from "./../models/regionsModel";
-import { Shippers } from "./../models/shippersModel";
-import { Territories } from "./../models/territoriesModel";
+import { Customers } from "../entities/customers";
+import { Employees } from "../entities/employees";
+import { OrderDetails } from "../entities/orderDetails";
+import { Orders } from "../entities/orders";
+import { Products } from "../entities/products";
+import { Suppliers } from "../entities/suppliers";
+import { Categories } from "../entities/categories";
+import { EmployeeTerritories } from "../entities/employeesTerritories";
+import { Regions } from "../entities/regions";
+import { Shippers } from "../entities/shippers";
+import { Territories } from "../entities/territories";
 
 dotenv.config();
 

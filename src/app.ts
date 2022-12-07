@@ -1,12 +1,12 @@
 import express from "express";
 import logger from "morgan";
 import cors from "cors";
-import supplierRouter from "./routes/suppliersRoutes";
-import productsRouter from "./routes/productsRoutes";
-import ordersRouter from "./routes/ordersRoutes";
-import employeesRouter from "./routes/employeesRoutes";
-import customersRouter from "./routes/customersRoutes";
-import { errorHandler } from "./helpers/errorHandlers";
+import supplierRouter from "./routes/suppliers";
+import productsRouter from "./routes/products";
+import ordersRouter from "./routes/orders";
+import employeesRouter from "./routes/employees";
+import customersRouter from "./routes/customers";
+import { errorHandler } from "./utils/errorHandlers";
 
 export const app = express();
 
