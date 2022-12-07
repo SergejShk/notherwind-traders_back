@@ -11,36 +11,36 @@ import {
   OneToMany,
 } from "typeorm";
 
-@Entity()
+@Entity({ name: "products" })
 export class Products extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "ProductID" })
   ProductID!: string;
 
-  @Column()
+  @Column({ name: "ProductName" })
   ProductName!: string;
 
-  @Column()
+  @Column({ name: "SupplierID" })
   SupplierID!: string;
 
-  @Column()
+  @Column({ name: "CategoryID" })
   CategoryID!: string;
 
-  @Column()
+  @Column({ name: "QuantityPerUnit" })
   QuantityPerUnit!: string;
 
-  @Column()
+  @Column({ name: "UnitPrice" })
   UnitPrice!: string;
 
-  @Column()
+  @Column({ name: "UnitsInStock" })
   UnitsInStock!: string;
 
-  @Column()
+  @Column({ name: "UnitsOnOrder" })
   UnitsOnOrder!: string;
 
-  @Column()
+  @Column({ name: "ReorderLevel" })
   ReorderLevel!: string;
 
-  @Column()
+  @Column({ name: "Discontinued" })
   Discontinued!: string;
 
   @ManyToOne(() => Suppliers, (suppliers) => suppliers.products)

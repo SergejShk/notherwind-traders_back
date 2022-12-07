@@ -12,48 +12,48 @@ import {
   JoinColumn,
 } from "typeorm";
 
-@Entity()
+@Entity({ name: "orders" })
 export class Orders extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "OrderID" })
   OrderID!: string;
 
-  @Column()
+  @Column({ name: "CustomerID" })
   CustomerID!: string;
 
-  @Column()
+  @Column({ name: "EmployeeID" })
   EmployeeID!: string;
 
-  @Column()
+  @Column({ name: "OrderDate" })
   OrderDate!: string;
 
-  @Column()
+  @Column({ name: "RequiredDate" })
   RequiredDate!: string;
 
-  @Column()
+  @Column({ name: "ShippedDate" })
   ShippedDate!: string;
 
-  @Column()
+  @Column({ name: "ShipVia" })
   ShipVia!: string;
 
-  @Column()
+  @Column({ name: "Freight" })
   Freight!: string;
 
-  @Column()
+  @Column({ name: "ShipName" })
   ShipName!: string;
 
-  @Column()
+  @Column({ name: "ShipAddress" })
   ShipAddress!: string;
 
-  @Column()
+  @Column({ name: "ShipCity" })
   ShipCity!: string;
 
-  @Column()
+  @Column({ name: "ShipRegion" })
   ShipRegion!: string;
 
-  @Column()
+  @Column({ name: "ShipPostalCode" })
   ShipPostalCode!: string;
 
-  @Column()
+  @Column({ name: "ShipCountry" })
   ShipCountry!: string;
 
   @OneToMany(() => OrderDetails, (orderDetails) => orderDetails.order)

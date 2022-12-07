@@ -9,24 +9,24 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 
-@Entity()
+@Entity({ name: "order_details" })
 export class OrderDetails extends BaseEntity {
   @PrimaryGeneratedColumn()
   OrderDetailsID!: number;
 
-  @Column()
+  @Column({ name: "OrderID" })
   OrderID!: string;
 
-  @Column()
+  @Column({ name: "ProductID" })
   ProductID!: string;
 
-  @Column()
+  @Column({ name: "UnitPrice" })
   UnitPrice!: string;
 
-  @Column()
+  @Column({ name: "Quantity" })
   Quantity!: string;
 
-  @Column()
+  @Column({ name: "Discount" })
   Discount!: string;
 
   @ManyToOne(() => Orders, (order) => order.orderDetails)

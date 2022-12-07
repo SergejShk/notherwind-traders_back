@@ -1,39 +1,39 @@
 import { Entity, BaseEntity, Column, PrimaryColumn, OneToMany } from "typeorm";
 import { Orders } from "./orders";
 
-@Entity()
+@Entity({ name: "customers" })
 export class Customers extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "CustomerID" })
   CustomerID!: string;
 
-  @Column()
+  @Column({ name: "CompanyName" })
   CompanyName!: string;
 
-  @Column()
+  @Column({ name: "ContactName" })
   ContactName!: string;
 
-  @Column()
+  @Column({ name: "ContactTitle" })
   ContactTitle!: string;
 
-  @Column()
+  @Column({ name: "Address" })
   Address!: string;
 
-  @Column()
+  @Column({ name: "City" })
   City!: string;
 
-  @Column()
+  @Column({ name: "Region" })
   Region!: string;
 
-  @Column()
+  @Column({ name: "PostalCode" })
   PostalCode!: string;
 
-  @Column()
+  @Column({ name: "Country" })
   Country!: string;
 
-  @Column()
+  @Column({ name: "Phone" })
   Phone!: string;
 
-  @Column()
+  @Column({ name: "Fax" })
   Fax!: string;
 
   @OneToMany(() => Orders, (orders) => orders.customers)

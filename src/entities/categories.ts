@@ -1,13 +1,13 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity()
+@Entity({ name: "categories" })
 export class Categories extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "CategoryID" })
   CategoryID!: string;
 
-  @Column()
+  @Column({ name: "CategoryName" })
   CategoryName!: string;
 
-  @Column()
+  @Column({ name: "Description" })
   Description!: string;
 }

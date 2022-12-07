@@ -1,10 +1,10 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity()
+@Entity({ name: "regions" })
 export class Regions extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "RegionID" })
   RegionID!: string;
 
-  @Column()
+  @Column({ name: "RegionDescription" })
   RegionDescription!: string;
 }

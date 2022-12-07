@@ -7,54 +7,54 @@ import {
   ManyToOne,
 } from "typeorm";
 
-@Entity()
+@Entity({ name: "employees" })
 export class Employees extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "EmployeeID" })
   EmployeeID!: string;
 
-  @Column()
+  @Column({ name: "LastName" })
   LastName!: string;
 
-  @Column()
+  @Column({ name: "FirstName" })
   FirstName!: string;
 
-  @Column()
+  @Column({ name: "Title" })
   Title!: string;
 
-  @Column()
+  @Column({ name: "TitleOfCourtesy" })
   TitleOfCourtesy!: string;
 
-  @Column()
+  @Column({ name: "BirthDate" })
   BirthDate!: string;
 
-  @Column()
+  @Column({ name: "HireDate" })
   HireDate!: string;
 
-  @Column()
+  @Column({ name: "Address" })
   Address!: string;
 
-  @Column()
+  @Column({ name: "City" })
   City!: string;
 
-  @Column()
+  @Column({ name: "Region" })
   Region!: string;
 
-  @Column()
+  @Column({ name: "PostalCode" })
   PostalCode!: string;
 
-  @Column()
+  @Column({ name: "Country" })
   Country!: string;
 
-  @Column()
+  @Column({ name: "HomePhone" })
   HomePhone!: string;
 
-  @Column()
+  @Column({ name: "Extension" })
   Extension!: string;
 
-  @Column()
+  @Column({ name: "Notes" })
   Notes!: string;
 
-  @Column()
+  @Column({ name: "ReportsTo" })
   ReportsTo!: string;
 
   @ManyToOne(() => Employees, (employee) => employee.reportsTo)

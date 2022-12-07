@@ -8,15 +8,15 @@ import {
   OneToMany,
 } from "typeorm";
 
-@Entity()
+@Entity({ name: "shippers" })
 export class Shippers extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "ShipperID" })
   ShipperID!: string;
 
-  @Column()
+  @Column({ name: "CompanyName" })
   CompanyName!: string;
 
-  @Column()
+  @Column({ name: "Phone" })
   Phone!: string;
 
   @OneToMany(() => Orders, (orders) => orders.shippers)

@@ -1,13 +1,13 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity()
+@Entity({ name: "territories" })
 export class Territories extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ name: "TerritoryID" })
   TerritoryID!: string;
 
-  @Column()
+  @Column({ name: "TerritoryDescription" })
   TerritoryDescription!: string;
 
-  @Column()
+  @Column({ name: "RegionID" })
   RegionID!: string;
 }
