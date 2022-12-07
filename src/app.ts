@@ -1,12 +1,12 @@
 import express from "express";
 import logger from "morgan";
 import cors from "cors";
-import ordersRouter from "./routes/orders";
 import employeesRouter from "./routes/employees";
 import customersRouter from "./routes/customers";
 import { errorHandler } from "./utils/errorHandlers";
 import suppliers from "./controllers/suppliers";
 import products from "./controllers/products";
+import orders from "./controllers/orders";
 
 export const app = express();
 
@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(suppliers.path, suppliers.router);
 app.use(products.path, products.router);
-app.use("/api/orders", ordersRouter);
+app.use(orders.path, orders.router);
 app.use("/api/employees", employeesRouter);
 app.use("/api/customers", customersRouter);
 
