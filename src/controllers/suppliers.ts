@@ -1,7 +1,7 @@
 import { Request } from "express";
-import { asyncWrapper } from "../utils/errorHandlers";
-import { getAllSuppliers, getSupplierById } from "../services/suppliers";
 import { Controller } from "./contrller";
+import { getAllSuppliers, getSupplierById } from "../services/suppliers";
+import { asyncWrapper } from "../utils/errorHandlers";
 
 class SuppliersController extends Controller {
   constructor() {
